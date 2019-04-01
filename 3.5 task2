@@ -1,0 +1,42 @@
+package ru.yandex.coolspawn;
+
+import java.util.Arrays;
+
+
+public class AsciiCharSequence implements CharSequence {
+    private final  byte value[];
+
+    private final int count;
+
+    public AsciiCharSequence(){
+        this.value = new byte[0];
+         this.count = 0;
+    }
+
+    public AsciiCharSequence(byte value[]){
+        this.value = Arrays.copyOf(value,value.length);
+          this.count = value.length;
+    }
+
+    @Override
+    public int length() {
+        return count;
+    }
+
+    @Override
+    public char charAt(int index) {
+        return (char) value[index];
+    }
+
+    @Override
+    public CharSequence subSequence(int start, int end) {
+        return new AsciiCharSequence(Arrays.copyOfRange(value,start,end));
+    }
+
+    @Override
+    public String toString(){
+
+
+        return new String(value);
+    }
+}
